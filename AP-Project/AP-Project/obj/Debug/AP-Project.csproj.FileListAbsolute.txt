@@ -1,0 +1,14 @@
+F:\AP-Final-Project\AP-Project\AP-Project\bin\Debug\AP-Project.exe.config
+F:\AP-Final-Project\AP-Project\AP-Project\bin\Debug\AP-Project.exe
+F:\AP-Final-Project\AP-Project\AP-Project\bin\Debug\AP-Project.pdb
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project.csprojAssemblyReference.cache
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\MainWindow.g.cs
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\App.g.cs
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project_MarkupCompile.cache
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project_MarkupCompile.lref
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\MainWindow.baml
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project.g.resources
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP_Project.Properties.Resources.resources
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project.csproj.GenerateResource.cache
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project.exe
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project.pdb

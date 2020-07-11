@@ -94,5 +94,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rest-manager-mobile.jpg" />
+    <Resource Include="Images\slider-hamberger-848x477.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Clients-for-the-Restaurant.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
