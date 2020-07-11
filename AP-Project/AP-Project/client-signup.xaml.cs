@@ -15,27 +15,20 @@ using System.Windows.Shapes;
 namespace AP_Project
 {
     /// <summary>
-    /// Interaction logic for client_login.xaml
+    /// Interaction logic for client_signup.xaml
     /// </summary>
-    public partial class client_login : Window
+    public partial class client_signup : Window
     {
-        public client_login()
+        public client_signup()
         {
             InitializeComponent();
         }
 
-        private void cback(object sender, RoutedEventArgs e)
+        private void back_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            MainWindow mw = new MainWindow();
-            mw.Show();
-        }
-
-        private void signup(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            client_signup cs = new client_signup();
-            cs.Show();
+            client_login cl = new client_login();
+            cl.Show();
         }
     }
 }

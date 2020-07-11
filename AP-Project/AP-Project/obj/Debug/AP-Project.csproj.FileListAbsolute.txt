@@ -17,3 +17,5 @@ F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\manager-login.g.cs
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project_Content.g.cs
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\client-login.baml
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\manager-login.baml
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\client-signup.g.cs
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\client-signup.baml

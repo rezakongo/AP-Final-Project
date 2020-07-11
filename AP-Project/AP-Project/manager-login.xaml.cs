@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AP_Project
@@ -18,7 +17,7 @@ namespace AP_Project
     /// <summary>
     /// Interaction logic for manager_login.xaml
     /// </summary>
-    public partial class manager_login : Page
+    public partial class manager_login : Window
     {
         public manager_login()
         {
@@ -27,8 +26,9 @@ namespace AP_Project
 
         private void back(object sender, RoutedEventArgs e)
         {
+            this.Hide();
             MainWindow mw = new MainWindow();
-            this.Content = mw;
+            mw.Show();
         }
     }
 }

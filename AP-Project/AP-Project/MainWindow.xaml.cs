@@ -23,21 +23,26 @@ namespace AP_Project
        
         public MainWindow()
         {
-            Button btn = new Button();
+            
             
             InitializeComponent();
         }
 
         private void manager(object sender, RoutedEventArgs e)
         {
-            manager_login mg = new manager_login();
-            this.Content = mg;
+            this.Hide();
+            manager_login ml = new manager_login();
+            ml.Show();
+            
         }
 
         private void client(object sender, RoutedEventArgs e)
         {
+            this.Hide();
             client_login cl = new client_login();
-            this.Content = cl;
+            cl.Show();
+            
         }
+        
     }
 }
