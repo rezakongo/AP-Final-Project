@@ -1,0 +1,52 @@
+﻿<Page x:Class="AP_Project.manager_login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AP_Project"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="manager_login">
+
+    <Grid>
+        <StackPanel Background="Black">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2,70,2,70" Source="Images/slider-hamberger-848x477.jpg"></Image>
+                    
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="2,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="Azure">MANAGER LOGIN</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="2,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Foreground="Azure">Username:</TextBlock>
+                    <TextBox x:Name="managerusername" Grid.Row="2" Grid.Column="1" Height="35" Margin="2,2,2,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Gray" Text="Enter Your Username" FontSize="20"></TextBox>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="2,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Foreground="Azure">Password:</TextBlock>
+                    <TextBox x:Name="managerpassword" Grid.Row="4" Grid.Column="1" Height="35" Margin="2,2,2,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" Text="Enter Your Password" FontSize="20"></TextBox>
+                    <Button x:Name="managerlogin" Grid.Row="5" Grid.Column="1" Margin="100,20,100,5" Background="Red">
+                        <TextBlock FontSize="20" FontWeight="Bold">LOGIN</TextBlock>
+                    </Button>
+                    <Button x:Name="managersignup" Grid.Row="6" Grid.Column="1" Margin="100,5,100,20" Background="Red">
+                        <TextBlock FontSize="20" FontWeight="Bold">SIGN UP</TextBlock>
+                    </Button>
+
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

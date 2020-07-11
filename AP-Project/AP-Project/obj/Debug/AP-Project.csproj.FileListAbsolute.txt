@@ -12,3 +12,8 @@ F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP_Project.Properties.Resour
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project.csproj.GenerateResource.cache
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project.exe
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project.pdb
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\client-login.g.cs
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\manager-login.g.cs
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\AP-Project_Content.g.cs
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\client-login.baml
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\manager-login.baml

@@ -16,28 +16,19 @@ using System.Windows.Shapes;
 namespace AP_Project
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for client_login.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class client_login : Page
     {
-       
-        public MainWindow()
+        public client_login()
         {
-            Button btn = new Button();
-            
             InitializeComponent();
         }
 
-        private void manager(object sender, RoutedEventArgs e)
+        private void back(object sender, RoutedEventArgs e)
         {
-            manager_login mg = new manager_login();
-            this.Content = mg;
-        }
-
-        private void client(object sender, RoutedEventArgs e)
-        {
-            client_login cl = new client_login();
-            this.Content = cl;
+            MainWindow mw = new MainWindow();
+            this.Content = mw;
         }
     }
 }
