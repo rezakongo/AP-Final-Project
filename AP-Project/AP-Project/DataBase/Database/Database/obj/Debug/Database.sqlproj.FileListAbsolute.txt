@@ -1,0 +1,10 @@
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\bin\Debug\Database.dacpac
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\bin\Debug\Database.dll
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\bin\Debug\Database.pdb
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\obj\Debug\Database.dll
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\obj\Debug\Database.pdb
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\obj\Debug\Model.xml
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\obj\Debug\refactor.xml
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\obj\Debug\postdeploy.sql
+F:\AP-Final-Project\AP-Project\AP-Project\DataBase\Database\Database\obj\Debug\predeploy.sql
