@@ -63,7 +63,12 @@ namespace AP_Project
 
             if (dataTable.Rows.Count == 1)
             {
-                MessageBox.Show("Yes");
+                OrderPage orderPage = new OrderPage(dataTable.Rows[0][0].ToString(),dataTable.Rows[0][2].ToString());
+                
+                
+                this.Close();
+                orderPage.Show();
+               
             }
             else
             {

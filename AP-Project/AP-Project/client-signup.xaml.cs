@@ -74,6 +74,11 @@ namespace AP_Project
                                         string query = "insert into Clients values('"+firstName+"','"+lastName + "','" +eMail + "','" +nationalID+ "','"+phoneNumber+ "','"+Adress + "','" +pass+ "')";
                                         SqlCommand addClient = new SqlCommand(query, Clients);
                                         addClient.ExecuteNonQuery();
+
+                                        MessageBox.Show("You Have Signed UP Successfully!!!");
+                                        client_login login = new client_login();
+                                        this.Close();
+                                        login.Show();
                                     }
                                     else
                                     {
