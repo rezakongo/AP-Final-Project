@@ -69,6 +69,7 @@ namespace AP_Project
             {
                 MessageBox.Show("Incorrect UserName or Password!!!");
             }
+            clientsAccess.Close();
         }
     }
 }

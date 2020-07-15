@@ -50,11 +50,7 @@ namespace AP_Project
 
             if(firstName!="" && lastName!="" && Adress!="" && phoneNumber!="" && nationalID!="" && eMail!="" && pass!="" && pass2 != "")
             {
-                //email=@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
-                //phonenumber= @"^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
-                //password=@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-                //name=@"^[a-zA-Z]+$"
-                //id= @"^[1-3](19|20)\d{2}[7-8]\d{7}[0-9]\d{2}$"
+                
                 string emailExist = "select * from Clients where EMail='"+eMail+"'";
                 SqlDataAdapter existedEmail = new SqlDataAdapter(emailExist, Clients);
                 DataTable table = new DataTable();

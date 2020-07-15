@@ -39,10 +39,10 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="1" Margin="2,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="Azure">MANAGER LOGIN</TextBlock>
                     <TextBlock Grid.Row="1" Grid.Column="1" Margin="2,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Foreground="Azure">Username:</TextBlock>
-                    <TextBox x:Name="managerusername" Grid.Row="2" Grid.Column="1" Height="35" Margin="2,2,2,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Gray" Text="Enter Your Username" FontSize="20"></TextBox>
+                    <TextBox x:Name="managerusername" Grid.Row="2" Grid.Column="1" Height="35" Margin="2,2,2,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Gray" FontSize="20"></TextBox>
                     <TextBlock Grid.Row="3" Grid.Column="1" Margin="2,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Foreground="Azure">Password:</TextBlock>
-                    <TextBox x:Name="managerpassword" Grid.Row="4" Grid.Column="1" Height="35" Margin="2,2,2,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" Text="Enter Your Password" FontSize="20"></TextBox>
-                    <Button x:Name="managerlogin" Grid.Row="5" Grid.Column="1" Margin="100,20,100,5" Background="Red">
+                    <PasswordBox x:Name="managerpassword" Grid.Row="4" Grid.Column="1" Height="35" Margin="2,2,2,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray"  FontSize="20"></PasswordBox>
+                    <Button x:Name="managerlogin" Grid.Row="5" Grid.Column="1" Margin="100,20,100,5" Background="Red" Click="managerlogin_Click">
                         <TextBlock FontSize="20" FontWeight="Bold">LOGIN</TextBlock>
                     </Button>
                     <Button x:Name="managersignup" Grid.Row="6" Grid.Column="1" Margin="100,5,100,20" Background="Red">
