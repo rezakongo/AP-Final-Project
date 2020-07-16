@@ -63,7 +63,9 @@ namespace AP_Project
 
             if (dataTable.Rows.Count == 1)
             {
-                MessageBox.Show("Yes");
+                ClientPage page = new ClientPage(dataTable.Rows[0][2].ToString());
+                page.Show();
+                this.Close();
             }
             else
             {
