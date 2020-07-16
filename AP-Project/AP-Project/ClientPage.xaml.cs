@@ -32,7 +32,11 @@ namespace AP_Project
             SqlDataAdapter adapter = new SqlDataAdapter(query, manager);
             adapter.Fill(table);
             hello.Text = "Hello "+table.Rows[0][0].ToString()+ "!!!";
-            
+            DataTable food = new DataTable();
+            query = "select name,inventory from food";
+            adapter = new SqlDataAdapter(query, manager);
+            adapter.Fill(food);
+            foodgrid.DataContext = food;
             manager.Close();
         }
     }
