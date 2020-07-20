@@ -53,8 +53,34 @@
                         </Grid>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Orders" Background="DarkGray"></TabItem>
-                <TabItem Header="Income" Background="DarkGray"></TabItem>
+                <TabItem Header="Orders" Background="DarkGray">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="True" CanUserAddRows="False" x:Name="allorders" Margin="5,5,5,5" Grid.Column="0"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Income" Background="DarkGray">
+                    <Grid Margin="5,5,5,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="OutCome : "  Grid.Row="0" Margin="5,5,5,0" FontSize="30" Background="red" FontWeight="Bold"/>
+                        <TextBlock  x:Name="outcome" Grid.Row="1" Margin="5,0,5,5" FontSize="30" Background="Red" FontWeight="Bold" />
+                        <TextBlock Text="OutCome : "  Grid.Row="2" Margin="5,5,5,0" FontSize="30" Background="Green" FontWeight="Bold"/>
+                        <TextBlock x:Name="income" Grid.Row="3" Margin="5,0,5,5" FontSize="30" Background="Green" FontWeight="Bold" />
+                        <TextBlock Text="Profit : "  Grid.Row="4" Margin="5,5,5,0" FontSize="30" Background="Yellow" FontWeight="Bold"/>
+                        <TextBlock x:Name="pro" Grid.Row="5" Margin="5,0,5,5" FontSize="30" Background="Yellow" FontWeight="Bold" />
+
+                    </Grid>
+                </TabItem>
                 <TabItem Header="Resturant Info" Background="DarkGray">
                     <StackPanel Background="Gray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                         <Grid>

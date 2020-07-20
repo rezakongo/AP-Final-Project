@@ -28,6 +28,9 @@ namespace AP_Project
         int r = 0;
         public ManagerPage()
         {
+            int inc= 0;
+            int outc = 0;
+            
             InitializeComponent();
             SqlConnection manager = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DtatBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             manager.Open();
@@ -44,7 +47,23 @@ namespace AP_Project
             adapter1.Fill(foods);
             r = foods.Rows.Count;
             foodtable.DataContext = foods;
-            manager.Close();
+            
+            string query = "select * from ords";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(query, manager);
+            DataTable data = new DataTable();
+            dataAdapter.Fill(data);
+
+            allorders.DataContext = data;
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                outc +=int.Parse(data.Rows[i][4].ToString());
+                inc += int.Parse(data.Rows[i][5].ToString());
+            }
+
+            outcome.Text = outc.ToString();
+            income.Text = inc.ToString();
+            pro.Text = (inc - outc).ToString();
+                manager.Close();
         }
 
         private void browse_Click(object sender, RoutedEventArgs e)
@@ -84,7 +103,7 @@ namespace AP_Project
                 
                 for (int j = table.Rows.Count - 1; j >= 0; j--)
                 {
-                    if (table.Rows[j][5] == "" && table.Rows[j][1] == "" && table.Rows[j][2] == "" && table.Rows[j][3] == "" && table.Rows[j][4] == "")
+                    if (table.Rows[j][1] == "")
                     {
                         table.Rows[j].Delete();
                     }

@@ -5,55 +5,106 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AP_Project"
         mc:Ignorable="d"
-        Title="ClientPage" Height="500" Width="1000" Background="Black">
+        Title="ClientPage" Height="700" Width="1000" Background="Black">
     <Grid>
         <StackPanel>
             <TabControl>
                 <StackPanel Background="Gray">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Margin="5,5,5,5" Foreground="Black" Text="Client Page" FontSize="30" FontWeight="Bold"/>
-                            <TextBlock Grid.Column="1" Margin="5,5,5,5" Foreground="Black" FontSize="18" x:Name="hello" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                            <Button x:Name="edit" Grid.Column="2" Margin="5,5,5,5" Content="Edit Your Prifile" FontSize="20" FontWeight="Bold" Background="DarkGray" BorderBrush="Black"/>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="8*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <DataGrid ItemsSource="{Binding}" CanUserAddRows="False" AutoGenerateColumns="True" x:Name="foodgrid" Margin="5,5,5,5" SelectionChanged="foodgrid_SelectionChanged"/>
-                            <Grid Grid.Column="1">
+                    <TabControl SelectionChanged="TabControl_SelectionChanged">
+                        <TabItem Header="Foods">
+                            <StackPanel>
+                            <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <Button x:Name="save" Grid.Row="0" Content="SAVE" FontSize="20" FontWeight="Bold" Margin="5,5,5,5" BorderBrush="Black" Click="save_Click"/>
-                                <Calendar x:Name="cal" Grid.Row="1" Margin="5,5,5,5"/>
-                                <ComboBox x:Name="ty" Grid.Row="2" Margin="5,5,5,5" >
-                                    <ComboBoxItem Content="Fast Food"/>
-                                    <ComboBoxItem Content="Sea Food"/>
-                                    <ComboBoxItem Content="Ancient"/>
-                                    <ComboBoxItem Content="Arabic"/>
-                                    <ComboBoxItem Content="Italian Food"/>
-                                    <ComboBoxItem IsSelected="True" Content="All"/>
-                                </ComboBox>
-                                <Image x:Name="foodim" Width="100" Height="100" Grid.Row="3" Margin="5,5,5,5"/>
-                                <Button x:Name="filter" Content="Filter" FontSize="20" FontWeight="DemiBold" Background="DarkGray" BorderBrush="Black" Margin="5,5,5,5" Grid.Row="4" Click="filter_Click"/>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Margin="5,5,5,5" Foreground="Black" Text="Client Page" FontSize="30" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="1" Margin="5,5,5,5" Foreground="Black" FontSize="18" x:Name="hello" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                    <Button x:Name="edit" Grid.Column="2" Margin="5,5,5,5" Content="Edit Your Prifile" FontSize="20" FontWeight="Bold" Background="DarkGray" BorderBrush="Black"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid ItemsSource="{Binding}" CanUserAddRows="False" AutoGenerateColumns="True" x:Name="foodgrid" Margin="5,5,5,5" SelectionChanged="foodgrid_SelectionChanged"/>
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Button x:Name="save" Grid.Row="0" Content="SAVE" FontSize="20" FontWeight="Bold" Margin="5,5,5,5" BorderBrush="Black" Click="save_Click"/>
+                                        <Calendar x:Name="cal" Grid.Row="1" Margin="5,5,5,5"/>
+                                        <ComboBox x:Name="ty" Grid.Row="2" Margin="5,5,5,5" >
+                                            <ComboBoxItem Content="Fast Food"/>
+                                            <ComboBoxItem Content="Sea Food"/>
+                                            <ComboBoxItem Content="Ancient"/>
+                                            <ComboBoxItem Content="Arabic"/>
+                                            <ComboBoxItem Content="Italian Food"/>
+                                            <ComboBoxItem IsSelected="True" Content="All"/>
+                                        </ComboBox>
+                                        <Image x:Name="foodim" Width="100" Height="100" Grid.Row="3" Margin="5,5,5,5"/>
+                                        <Button x:Name="filter" Content="Filter" FontSize="20" FontWeight="DemiBold" Background="DarkGray" BorderBrush="Black" Margin="5,5,5,5" Grid.Row="4" Click="filter_Click"/>
+                                        <Button x:Name="add" Margin="5,5,5,5" Content="Add To Order" FontSize="20" FontWeight="DemiBold" Background="DarkGray" BorderBrush="Black" Grid.Row="5" Click="add_Click"/>
+                                    </Grid>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Grid>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Curent Order" Height="22" VerticalAlignment="Top">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="True" CanUserAddRows="False" Grid.Column="0" x:Name="cdg" Margin="5,5,5,5"/>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Button x:Name="saveorder" Grid.Row="0" Content="Save Order" Margin="5,5,5,5" FontSize="20" FontWeight="DemiBold" BorderBrush="Black" Click="saveorder_Click"/>
+                                    <Button x:Name="ref" Grid.Row="1" Content="Refresh" FontSize="20" FontWeight="bold" BorderBrush="Black" Margin="5,5,5,5" Click="ref_Click"/>
+                                    <TextBlock Text="Final Price :" Margin="5,5,5,5" FontSize="20" FontWeight="Bold" Grid.Row="2"/>
+                                    <TextBlock x:Name="finalprice"  Grid.Row="3" Margin="5,5,5,5" FontSize="20" FontWeight="bold"/>
+                                    <TextBlock Text="First Price :" Margin="5,5,5,5" FontSize="20" FontWeight="Bold" Grid.Row="4"/>
+                                    <TextBlock x:Name="firstprice" Margin="5,5,5,5" FontSize="20" FontWeight="Bold" Grid.Row="5"/>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="All Orders">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid Margin="5,5,5,5" Grid.Column="0" ItemsSource="{Binding}" AutoGenerateColumns="True" x:Name="allorder" CanUserAddRows="False"/>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Button Grid.Row="0" x:Name="pay" Content="PAY" Margin="5,5,5,5" FontSize="20" FontWeight="DemiBold" BorderBrush="Black" Click="pay_Click"/>
+                                    <Button Grid.Row="1" x:Name="cancel" Content="Cancel" Margin="5,5,5,5" FontSize="20" FontWeight="DemiBold" BorderBrush="Black" Click="cancel_Click"/>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    
                 </StackPanel>
             </TabControl>
         </StackPanel>
