@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AP_Project"
         mc:Ignorable="d"
-        Title="ManagerPage" Height="450" Width="800" Background="Black">
+        Title="ManagerPage" Height="500" Width="1000" Background="Black">
     <Grid>
         <StackPanel>
             <TabControl>
@@ -16,16 +16,39 @@
                                 <ColumnDefinition Width="8*"/>
                                 <ColumnDefinition  Width="2*"/>
                             </Grid.ColumnDefinitions>
-                            
-                            <DataGrid x:Name="foodtable" ItemsSource="{Binding}"  AutoGenerateColumns="True" Margin="5,5,5,5" Grid.Column="0"></DataGrid>
+
+                            <DataGrid ScrollBar.Scroll="foodtable_Scroll" x:Name="foodtable" ItemsSource="{Binding}"  AutoGenerateColumns="True" Margin="5,5,5,5" Grid.Column="0" SelectionChanged="foodtable_SelectionChanged"></DataGrid>
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
-
-
-
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Button x:Name="Changes" Content="Save Changes!" Background="DarkGray" FontSize="20" FontWeight="DemiBold" Margin="5,5,5,5" BorderBrush="Black" Click="Changes_Click"/>
+                                <Calendar  x:Name="cal" Grid.Row="1" Background="DarkGray"  Margin="5,5,5,5"/>
+                                <ComboBox Name="t" Margin="5,5,5,5" Grid.Row="2">
+                                    <ComboBoxItem Content="Fast Food" IsSelected="True" x:Name="fastfood" Tag="fastfood"/>
+                                    <ComboBoxItem Content="Ancient" Name="ancient" Tag="ancient"/>
+                                    <ComboBoxItem Content="Arabic" Name="arabic" Tag="arabic"/>
+                                    <ComboBoxItem Content="Sea Food" x:Name="seafood" Tag="seafood"/>
+                                    <ComboBoxItem Content="Italian Food"  Name="italian" Tag="Italian"/>
+                                    
+                                </ComboBox>
+                                <TextBlock Text="Image" Margin="5,5,5,5" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3"/>
+                                
+                                    <Image x:Name="fi" Margin="5,5,5,5" Width="100" Grid.Row="4" Height="100"/>
+                                <Grid Grid.Row="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="it" Grid.Column="0" Margin="5,5,5,5" Background="DarkGray" BorderBrush="Black"/>
+                                    <Button x:Name="ci" Grid.Column="1" Margin="5,5,5,5" Background="DarkGray" BorderBrush="black" Content="Browse" Click="ci_Click"/>
+                                </Grid>
+                                
                             </Grid>
                         </Grid>
                     </StackPanel>
@@ -36,9 +59,11 @@
                     <StackPanel Background="Gray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="7*"/>
-                                <ColumnDefinition Width="124*"/>
-                                <ColumnDefinition Width="131*"/>
+                                <ColumnDefinition Width="17*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="363*"/>
+                                <ColumnDefinition Width="393*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -49,18 +74,18 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="FirstName :" FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-                            <TextBox x:Name="firstname" Grid.Row="1" Grid.Column="0" Margin="5,5,5,5" FontSize="20" Background="DarkGray" BorderBrush="Black" Grid.ColumnSpan="2"/>
-                            <TextBlock Text="LastName :" FontSize="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
-                            <TextBox x:Name="lastname" FontSize="20" Grid.Row="3" Grid.Column="0" Margin="5,5,5,4.6" Background="DarkGray" BorderBrush="Black" Grid.ColumnSpan="2"/>
-                            <TextBlock Text="Type :" FontSize="20" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0.4,0,200.2" Grid.RowSpan="2"/>
-                            <TextBox  Height="30" VerticalAlignment="Top"  Name="type" Margin="5,5.8,5,0" Grid.Column="0" Grid.Row="5" FontSize="20" Background="DarkGray" BorderBrush="Black" Grid.ColumnSpan="2"/>
-                            <TextBlock Text="Regeon :" FontSize="20" Grid.Row="0" Grid.Column="2"/>
-                            <TextBox x:Name="regeon" FontSize="20" Grid.Column="2" Grid.Row="1" Background="DarkGray" BorderBrush="Black" Margin="5,5,5,5"/>
-                            <TextBlock Text="Adress :" FontSize="20" Grid.Row="2" Grid.Column="2"/>
-                            <TextBox x:Name="adress" Grid.Row="3" Grid.Column="2" Margin="5,5,5,4.6" Background="DarkGray" BorderBrush="Black"/>
-                            <TextBlock Text="Menu :" FontSize="20" Grid.Row="4" Grid.Column="2" Margin="0,0.4,0,200.2" Grid.RowSpan="2"/>
-                            <Grid Grid.Row="4" Grid.Column="2" Margin="0,26.4,0,0.2" Grid.RowSpan="2">
+                            <TextBlock Text="FirstName :" FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"/>
+                            <TextBox x:Name="firstname" Grid.Row="1" Grid.Column="0" Margin="5,5,5,4.6" FontSize="20" Background="DarkGray" BorderBrush="Black" Grid.ColumnSpan="4"/>
+                            <TextBlock Text="LastName :" FontSize="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,0.4,0,37.6" Grid.RowSpan="2"/>
+                            <TextBox x:Name="lastname" FontSize="20" Grid.Row="3" Grid.Column="0" Margin="5,5.4,5,3.6" Background="DarkGray" BorderBrush="Black" Grid.ColumnSpan="4"/>
+                            <TextBlock Text="Type :" FontSize="20" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,0.4,0,15.6"/>
+                            <TextBox  Height="30" VerticalAlignment="Top"  Name="type" Margin="5,6.4,5,0" Grid.Column="0" Grid.Row="5" FontSize="20" Background="DarkGray" BorderBrush="Black" Grid.ColumnSpan="4"/>
+                            <TextBlock Text="Regeon :" FontSize="20" Grid.Row="0" Grid.Column="4"/>
+                            <TextBox x:Name="regeon" FontSize="20" Grid.Column="4" Grid.Row="1" Background="DarkGray" BorderBrush="Black" Margin="5,5,5,4.6"/>
+                            <TextBlock Text="Adress :" FontSize="20" Grid.Row="2" Grid.Column="4" Margin="0,0.4,0,37.6" Grid.RowSpan="2"/>
+                            <TextBox x:Name="adress" Grid.Row="3" Grid.Column="4" Margin="5,5.4,5,3.6" Background="DarkGray" BorderBrush="Black"/>
+                            <TextBlock Text="Menu :" FontSize="20" Grid.Row="4" Grid.Column="4" Margin="0,0.4,0,15.6"/>
+                            <Grid Grid.Row="4" Grid.Column="4" Margin="0,26.4,0,-0.4" Grid.RowSpan="3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
@@ -73,7 +98,7 @@
                                 <Button x:Name="browse" Content="Browse" FontSize="20" FontWeight="DemiBold" Background="DarkGray" BorderBrush="Black" Grid.Row="0" Margin="5,5,5,5" Grid.Column="1" Click="browse_Click"/>
                                 <Image x:Name="im" Grid.Row="1" Width="150" Height="150" Margin="5,5,5,5"></Image>
                             </Grid>
-                            <Button x:Name="change" Content="Change Info" Margin="18.875,49.8,40,40.2" BorderBrush="Black" BorderThickness="4" FontSize="30" FontWeight="Bold" Grid.Column="1"  Grid.Row="5" Click="change_Click"/>
+                            <Button x:Name="change" Content="Change Info" Margin="9.5,50.4,40,39.6" BorderBrush="Black" BorderThickness="4" FontSize="30" FontWeight="Bold" Grid.Column="3"  Grid.Row="5" Click="change_Click"/>
                         </Grid>
                     </StackPanel>
                 </TabItem>
