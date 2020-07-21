@@ -229,5 +229,41 @@ namespace AP_Project
             }
 
         }
+
+        private void allorders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataTable table = new DataTable();
+            table = ((DataView)allorders.ItemsSource).ToTable();
+            int r =int.Parse(allorders.SelectedIndex.ToString());
+            cos.Text = table.Rows[r][1].ToString();
+            adr.Text = table.Rows[r][2].ToString();
+            string o = table.Rows[r][3].ToString();
+            string[] x = o.Split(',');
+            string fact = "";
+            for (int i = 0; i < x.Length; i++)
+            {
+                string[] y = x[i].Split('-');
+                string[] z = y[2].Split(' ');
+                fact += (i + 1).ToString() + "-" + y[0] + " : " + y[1] + " at " + z[0] + "\n";
+            }
+            string incom = table.Rows[r][5].ToString()+"\n";
+            string outcom= table.Rows[r][4].ToString()+"\n";
+            fact += "Income : " + incom;
+            fact += "Outcome : " + outcom;
+            factor.Text = fact;
+            if (table.Rows[r][6].ToString() == "yes")
+            {
+                pay.Text = "Paid!!!";
+
+                pay.Background = Brushes.Green;
+            }
+            else
+            {
+                pay.Text = "Not Paid Yet!!!";
+                pay.Background = Brushes.Red;
+            }
+
+
+        }
     }
 }

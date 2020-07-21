@@ -26,7 +26,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Margin="5,5,5,5" Foreground="Black" Text="Client Page" FontSize="30" FontWeight="Bold"/>
                                     <TextBlock Grid.Column="1" Margin="5,5,5,5" Foreground="Black" FontSize="18" x:Name="hello" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                                    <Button x:Name="edit" Grid.Column="2" Margin="5,5,5,5" Content="Edit Your Prifile" FontSize="20" FontWeight="Bold" Background="DarkGray" BorderBrush="Black"/>
+                                    <Button x:Name="edit" Grid.Column="2" Margin="5,5,5,5" Content="Edit Your Prifile" FontSize="20" FontWeight="Bold" Background="DarkGray" BorderBrush="Black" Click="edit_Click"/>
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
@@ -92,14 +92,16 @@
                                     <ColumnDefinition Width="8*"/>
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
-                                <DataGrid Margin="5,5,5,5" Grid.Column="0" ItemsSource="{Binding}" AutoGenerateColumns="True" x:Name="allorder" CanUserAddRows="False"/>
+                                <DataGrid Margin="5,5,5,5" Grid.Column="0" ItemsSource="{Binding}" AutoGenerateColumns="True" x:Name="allorder" CanUserAddRows="False" SelectionChanged="allorder_SelectionChanged"/>
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                     <Button Grid.Row="0" x:Name="pay" Content="PAY" Margin="5,5,5,5" FontSize="20" FontWeight="DemiBold" BorderBrush="Black" Click="pay_Click"/>
                                     <Button Grid.Row="1" x:Name="cancel" Content="Cancel" Margin="5,5,5,5" FontSize="20" FontWeight="DemiBold" BorderBrush="Black" Click="cancel_Click"/>
+                                    <TextBox x:Name="factor" Grid.Row="2" Margin="5,5,5,5" Background="DarkGray" Height="500"/>
                                 </Grid>
                             </Grid>
                         </TabItem>

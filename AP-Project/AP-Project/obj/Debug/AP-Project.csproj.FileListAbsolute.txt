@@ -26,3 +26,5 @@ F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\ManagerPage.g.cs
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\ManagerPage.baml
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\ClientPage.g.cs
 F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\ClientPage.baml
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\editc.g.cs
+F:\AP-Final-Project\AP-Project\AP-Project\obj\Debug\editc.baml

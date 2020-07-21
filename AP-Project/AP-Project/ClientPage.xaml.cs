@@ -53,12 +53,14 @@ namespace AP_Project
 
             adapter = new SqlDataAdapter(query, manager);
             adapter.Fill(food);
-            foodgrid.DataContext = food;
             food.Columns.Add("Number");
+
+            
             for(int i = 0; i < food.Rows.Count; i++)
             {
                 food.Rows[i][9] = "0";
             }
+            foodgrid.DataContext = food;
             try
             {
                 query = "select * from ords where mail='" + em.ToString() + "'";
@@ -194,28 +196,52 @@ namespace AP_Project
 
         private void saveorder_Click(object sender, RoutedEventArgs e)
         {
-
-            int price = 0;
-            int fprice = 0;
-            for (int i = 0; i < currentorder.Rows.Count; i++)
+            SqlConnection orders = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DtatBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            orders.Open();
+            DataTable table = new DataTable();
+            table = ((DataView)cdg.ItemsSource).ToTable();
+            string q;
+            bool ok = true;
+            for(int i = 0; i < table.Rows.Count; i++)
             {
-                price += (int.Parse(currentorder.Rows[i][3].ToString())) * (int.Parse(currentorder.Rows[i][1].ToString()));
-                fprice += int.Parse(currentorder.Rows[i][2].ToString()) * (int.Parse(currentorder.Rows[i][1].ToString()));
+                q = "select inventory from food where name='" + table.Rows[i][0] + "' and day='" + table.Rows[0][4]+"'";
+                DataTable table3 = new DataTable();
+                SqlDataAdapter sql = new SqlDataAdapter(q, orders);
+                sql.Fill(table3);
+                if (int.Parse(table3.Rows[0][0].ToString()) < int.Parse(table.Rows[i][1].ToString()))
+                {
+                    ok = false;
+                    break;
+                }
             }
-            finalprice.Text = price.ToString();
-            firstprice.Text = fprice.ToString();
+            if (ok)
+            {
+                int price = 0;
+                int fprice = 0;
+                for (int i = 0; i < currentorder.Rows.Count; i++)
+                {
+                    price += (int.Parse(currentorder.Rows[i][3].ToString())) * (int.Parse(currentorder.Rows[i][1].ToString()));
+                    fprice += int.Parse(currentorder.Rows[i][2].ToString()) * (int.Parse(currentorder.Rows[i][1].ToString()));
+                    q = "select inventory from food where name='" + table.Rows[i][0] + "' and day='" + table.Rows[0][4] + "'";
+                    DataTable table3 = new DataTable();
+                    SqlDataAdapter sql = new SqlDataAdapter(q, orders);
+                    sql.Fill(table3);
+                    q = "update food set inventory= '"+(int.Parse(table3.Rows[0][0].ToString())-int.Parse(currentorder.Rows[i][1].ToString())).ToString()+"' where name='" + table.Rows[i][0] + "' and day='" + table.Rows[0][4] + "'";
+                    SqlCommand sqlCommand = new SqlCommand(q, orders);
+                    sqlCommand.ExecuteNonQuery();
+                }
+                finalprice.Text = price.ToString();
+                firstprice.Text = fprice.ToString();
 
-            string ord = "";
+                string ord = "";
 
-                DataTable table = new DataTable();
-                table = ((DataView)cdg.ItemsSource).ToTable();
+
                 ord += table.Rows[0][0] + "-" + table.Rows[0][1] + "-" + table.Rows[0][4];
                 for (int i = 1; i < table.Rows.Count; i++)
                 {
                     ord += "," + table.Rows[i][0] + "-" + table.Rows[i][1] + "-" + table.Rows[i][4];
                 }
-                SqlConnection orders = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DtatBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                orders.Open();
+
                 string query = "select * from Clients where EMail='" + em.ToString() + "'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, orders);
                 DataTable table1 = new DataTable();
@@ -225,7 +251,7 @@ namespace AP_Project
                 adapter = new SqlDataAdapter(query, orders);
                 DataTable table2 = new DataTable();
                 adapter.Fill(table2);
-                string code = (int.Parse(table2.Rows[table2.Rows.Count - 1][0].ToString())+1).ToString();
+                string code = (int.Parse(table2.Rows[table2.Rows.Count - 1][0].ToString()) + 1).ToString();
                 query = "insert into c values ('" + (int.Parse(code)).ToString() + "')";
                 SqlCommand command = new SqlCommand(query, orders);
                 command.ExecuteNonQuery();
@@ -234,10 +260,10 @@ namespace AP_Project
                 command.ExecuteNonQuery();
                 query = "select * from ords where mail='" + em.ToString() + "'";
                 adapter = new SqlDataAdapter(query, orders);
-            ords = new DataTable();
+                ords = new DataTable();
                 adapter.Fill(ords);
                 allorder.DataContext = ords;
-                orders.Close();
+                
                 MessageBox.Show("Your Order Saves !!!");
                 currentorder = new DataTable();
                 currentorder.Columns.Add("name");
@@ -246,8 +272,16 @@ namespace AP_Project
                 currentorder.Columns.Add("Final Price");
                 currentorder.Columns.Add("date");
                 cdg.DataContext = currentorder;
-            
-            
+                ClientPage cp = new ClientPage(em);
+                cp.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Che Khabaretoone!!! Che Khabaretoone!!!");
+            }
+            orders.Close();
+
         }
 
         private void pay_Click(object sender, RoutedEventArgs e)
@@ -290,6 +324,7 @@ namespace AP_Project
                 data = ((DataView)allorder.ItemsSource).ToTable();
                 string r = allorder.SelectedIndex.ToString();
                 string cod = data.Rows[int.Parse(r)][0].ToString();
+                string[] ord = data.Rows[int.Parse(r)][3].ToString().Split(',');
                 if (data.Rows[int.Parse(r)][6].ToString() == "no")
                 {
                     SqlConnection orders = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DtatBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -302,16 +337,74 @@ namespace AP_Project
                     data = new DataTable();
                     dataAdapter.Fill(data);
 
-                    allorder.DataContext = data;
+                    query = "select * from food";
+                    SqlDataAdapter sql = new SqlDataAdapter(query, orders);
+                    DataTable dataTable = new DataTable();
+                    sql.Fill(dataTable);
+                    for (int i = 0; i < ord.Length; i++)
+                    {
+                        string[] f = ord[i].Split('-');
+                        query = "select inventory from food where name='" + f[0] + "' and day='" + f[2] + "'";
+                        SqlDataAdapter sda = new SqlDataAdapter(query, orders);
+                        DataTable dt = new DataTable();
+                        sda.Fill(dt);
+
+                        string que = "update food set inventory='" + (int.Parse(f[1]) + int.Parse(dt.Rows[0][0].ToString())).ToString() + "'where name='" + f[0] + "'and day='" + f[2] + "'";
+                        SqlCommand command = new SqlCommand(que, orders);
+                        command.ExecuteNonQuery();
+
+                    }
+
                     orders.Close();
                     MessageBox.Show("Canceled Successfully!!!");
+                    this.Close();
+                    ClientPage page = new ClientPage(em);
+                    page.Show();
                 }
                 else
                 {
                     MessageBox.Show("You Paid Before!!!");
                 }
             }
-            catch { }
+            catch
+            {
+
+            }
+            
+        }
+
+        private void allorder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                int r = int.Parse(allorder.SelectedIndex.ToString());
+                DataTable ords = new DataTable();
+                ords = ((DataView)allorder.ItemsSource).ToTable();
+                string o = ords.Rows[r][3].ToString();
+                string[] x = o.Split(',');
+                string fact = "Factor : \n";
+                for (int i = 0; i < x.Length; i++)
+                {
+                    string[] y = x[i].Split('-');
+                    string[] z = y[2].Split(' ');
+                    fact += (i + 1).ToString() + "-" + y[0] + " : " + y[1] + " at " + z[0] + "\n";
+                }
+                fact += "Price : " + ords.Rows[r][5].ToString()+"\n";
+                fact += "Paid : " + ords.Rows[r][6].ToString() + "\n";
+                factor.Text = fact;
+                
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void edit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            editc edit = new editc(em);
+            edit.Show();
         }
     }
 }
