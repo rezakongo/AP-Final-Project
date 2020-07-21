@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AP_Project"
         mc:Ignorable="d"
-        Title="ManagerPage" Height="550" Width="1000" Background="Black">
+        Title="ManagerPage" Height="680" Width="1000" Background="Black">
     <Grid>
         <StackPanel>
             <TabControl>
@@ -150,6 +150,7 @@
                         </Grid>
                     </StackPanel>
                 </TabItem>
+                
             </TabControl>
 
         </StackPanel>

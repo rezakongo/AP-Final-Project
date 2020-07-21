@@ -17,6 +17,51 @@ using System.Text.RegularExpressions;
 
 namespace AP_Project
 {
+    class chat
+    {
+       
+        public string sender;
+        public string ch;
+        DataTable table;
+
+        public SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DtatBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+       
+        public chat(string mail)
+        {
+            sender = mail;
+            SqlDataAdapter adapter = new SqlDataAdapter("select * from chat", con);
+            table = new DataTable();
+            adapter.Fill(table);
+            ch = "";
+            for(int i = 0; i < table.Rows.Count; i++)
+            {
+                ch += table.Rows[i][0].ToString() + " : " + table.Rows[i][1].ToString() + "\n";
+            }
+            
+        }
+
+        public void add(string pm)
+        {
+            
+            if (pm != "")
+            {
+                con.Open();
+                string query = "insert into chat values('" + sender.ToString() + "','" + pm.ToString() + "')";
+                SqlCommand command = new SqlCommand(query, con);
+                command.ExecuteNonQuery();
+                SqlDataAdapter adapter = new SqlDataAdapter("select * from chat", con);
+                table = new DataTable();
+                adapter.Fill(table);
+                ch = "";
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    ch += table.Rows[i][0].ToString() + " : " + table.Rows[i][1].ToString() + "\n";
+                }
+                con.Close();
+            }
+        }
+
+    }
 
     /// <summary>
     /// Interaction logic for ClientPage.xaml
@@ -28,14 +73,15 @@ namespace AP_Project
         SqlConnection manager = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DtatBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         DataTable food = new DataTable();
         string em;
-        
+        chat ch;
         public ClientPage(string email)
         {
             InitializeComponent();
             em = email;
             currentorder.Columns.Add("name");
             currentorder.Columns.Add("number");
-            
+            ch = new chat(email);
+            chatbox.Text = ch.ch;
             currentorder.Columns.Add("first Price");
             currentorder.Columns.Add("Final Price");
             currentorder.Columns.Add("date");
@@ -405,6 +451,12 @@ namespace AP_Project
             this.Close();
             editc edit = new editc(em);
             edit.Show();
+        }
+
+        private void send_Click(object sender, RoutedEventArgs e)
+        {
+            ch.add(pmb.Text.Trim());
+            chatbox.Text = ch.ch;
         }
     }
 }

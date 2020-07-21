@@ -20,17 +20,19 @@ using System.Security.Cryptography;
 
 namespace AP_Project
 {
+    
     /// <summary>
     /// Interaction logic for ManagerPage.xaml
     /// </summary>
     public partial class ManagerPage : Window
     {
         int r = 0;
+
+        
         public ManagerPage()
         {
             int inc= 0;
             int outc = 0;
-            
             InitializeComponent();
             SqlConnection manager = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DtatBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             manager.Open();
@@ -265,5 +267,6 @@ namespace AP_Project
 
 
         }
+
     }
 }
